@@ -20,12 +20,10 @@ object Exercise1 {
       .sortBy(-_._2) // Sort the tuples by the length average in descending order
 
     // Print all results
-    results.collect().foreach { case (letter, length_average) =>
-      println(s"$letter $length_average")
-    }
+    results.collect().foreach(println)
 
     // Save the output as text
-    results.saveAsTextFile(outputDir)
+    results.map(_.toString().replace("(","").replace(")", "")).saveAsTextFile("outputs/output1")
 
     sc.stop()
   }
