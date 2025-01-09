@@ -11,8 +11,8 @@ object Exercise1 {
     val txtFile = sc.textFile(inputFile)
 
     val results = txtFile.flatMap(line => line.split(" ")) // Split text to lines
-      .map(_.replaceAll("[\\p{Punct}]", "")) // Remove punctuation marks
-      .map(_.toLowerCase) // Turn all letters to lower case
+      .map(word => word.replaceAll("[\\p{Punct}]", "")) // Remove punctuation marks
+      .map(word => word.toLowerCase) // Turn all letters to lower case
       .filter(word => word.matches("[a-z].*")) // Filter out the words that don't start with letters
       .map(word => (word.charAt(0), word.length)) // Create a tuple for each word: (word's first letter, word's length)
       .groupByKey() // Group the tuples based on the key (aka the word's first letter)
